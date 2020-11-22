@@ -1,11 +1,10 @@
 function statement(invoice, plays) {
   let result = `Statement for ${invoice.customer}\n`;
-  let totalAmount = appleSauce();
-  result += `Amount owed is ${usd(totalAmount / 100)}\n`;
+  result += `Amount owed is ${usd(totalAmount())}\n`;
   result += `You earned ${totalVolumeCredits()} credits\n`;
   return result;
 
-  function appleSauce() {
+  function totalAmount() {
     let totalAmount = 0;
     for (let perf of invoice.performances) {
 
