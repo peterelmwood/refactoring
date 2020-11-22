@@ -5,22 +5,22 @@ function statement(invoice, plays) {
   return result;
 
   function totalAmount() {
-    let totalAmount = 0;
+    let result = 0;
     for (let perf of invoice.performances) {
 
       // print line for this order
       result += `  ${playFor(perf).name}: ${usd(amountFor(perf) / 100)} (${perf.audience} seats)\n`;
-      totalAmount += amountFor(perf);
+      result += amountFor(perf);
     }
-    return totalAmount;
+    return result;
   }
 
   function totalVolumeCredits() {
-    let volumeCredits = 0;
+    let result = 0;
     for (let perf of invoice.performances) {
-      volumeCredits += volumeCreditsFor(perf);
+      result += volumeCreditsFor(perf);
     }
-    return volumeCredits;
+    return result;
   }
 
   function usd(aNumber) {
@@ -32,10 +32,10 @@ function statement(invoice, plays) {
   }
 
   function volumeCreditsFor(aPerformance) {
-    let volumeCredits = 0;
-    volumeCredits += Math.max(aPerformance.audience - 30, 0);
-    if ("comedy" === playFor(aPerformance).type) volumeCredits += Math.floor(aPerformance.audience / 5);
-    return volumeCredits;
+    let result = 0;
+    result += Math.max(aPerformance.audience - 30, 0);
+    if ("comedy" === playFor(aPerformance).type) result += Math.floor(aPerformance.audience / 5);
+    return result;
   }
 
   function playFor(aPerformance) {
