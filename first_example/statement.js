@@ -48,22 +48,13 @@ function statement(invoice, plays) {
     return result;
   }
   function totalAmount(data) {
-    let result = 0;
-    for (let perf of data.performances) {
-
-      // print line for this order
-      result += `  ${perf.play.name}: ${usd(amountFor(perf) / 100)} (${perf.audience} seats)\n`;
-      result += perf.amount;
-    }
-    return result;
+    return data.performances
+      .reduce((total, p) => total + p.amount, 0);
   }
 
   function totalVolumeCredits(data) {
-    let result = 0;
-    for (let perf of data.performances) {
-      result += perf.volumeCredits;
-    }
-    return result;
+    return data.performances
+      .reduce((total, p) => total + p.volumeCredits, 0);
   }
 }
 
