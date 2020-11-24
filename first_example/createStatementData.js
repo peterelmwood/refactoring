@@ -48,6 +48,7 @@ export default function createStatementData(invoice, plays) {
       result += Math.floor(aPerformance.audience / 5);
     return result;
   }
+
   function totalAmount(data) {
     return data.performances
       .reduce((total, p) => total + p.amount, 0);
